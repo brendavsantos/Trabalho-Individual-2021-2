@@ -41,4 +41,5 @@ services:
 
 networks:
   biblioteca-network:
+    driver: bridge
     external: true
