@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build application
-        working-directory: ./app
+        working-directory: ./aplicacao
         run: docker-compose up -d
 
   lint:
@@ -30,8 +30,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Reset DB
-        working-directory: ./apP
+        working-directory: ./aplicacao
         run: docker-compose run app rails db:reset
       - name: Run Tests
-        working-directory: ./app
+        working-directory: ./aplicacao
         run: docker-compose run app rspec
