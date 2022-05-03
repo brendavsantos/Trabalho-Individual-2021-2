@@ -10,6 +10,19 @@ services:
       - .db.env
     networks:
       - biblioteca-network
+  
+  nginx:
+    container_name: nginx
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    networks:
+      - biblioteca-network
 
   app:
     container_name: biblioteca
