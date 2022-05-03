@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 
 services:
   db:
@@ -8,3 +8,24 @@ services:
       - "5432:5432"
     env_file:
       - .db.env
+    networks:
+      - biblioteca-network
+
+  app:
+    container_name: biblioteca
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: bash -c "rails db:create db:migrate db:seed && rails server"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - biblioteca-network
+
+networks:
+  biblioteca-network:
+    external: true
