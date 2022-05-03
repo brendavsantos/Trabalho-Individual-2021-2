@@ -40,6 +40,5 @@ services:
       - biblioteca-network
 
 networks:
-  biblioteca-network: 
-    - "docker network create biblioteca-network"
-  external: true
+  biblioteca-network:
+    external: true
