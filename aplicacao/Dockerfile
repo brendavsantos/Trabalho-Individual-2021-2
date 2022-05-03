@@ -4,3 +4,5 @@ WORKDIR /app
 
 COPY . /app
 RUN bundle install
+
+RUN docker network create biblioteca-network
